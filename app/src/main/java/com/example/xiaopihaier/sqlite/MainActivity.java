@@ -79,8 +79,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ContentValues values=new ContentValues();
                 //组装数据
                 values.put("info",add_edi.getText().toString().trim());
-                //插入数据
-                db_add.insert("info",null,values);
+                //插入数据到表中
+                db_add.insert("table_name",null,values);
                 //关闭数据库
                 db_add.close();
                 break;
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //创建一个可写数据库,并执行删除数据操作
                 SQLiteDatabase db_delete=dbHelper.getWritableDatabase();
                 //删除数据
-                db_delete.delete("info","id>?",new String[]{"10"});
+                db_delete.delete("info","id>?",new String[]{"1"});
                 //关闭数据库
                 db_delete.close();
                 break;
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //创建一个可读数据库,并执行查询数据的操作
                 SQLiteDatabase db_query=dbHelper.getReadableDatabase();
                 //查询info表所有数据
-                Cursor cursor=db_query.query("info",null,null,null,null,null,null);
+                Cursor cursor=db_query.query("table_name",null,null,null,null,null,null);
                 if (cursor.moveToFirst()) {
                     do {
                         //遍历cursor对象,取出数据并显示
