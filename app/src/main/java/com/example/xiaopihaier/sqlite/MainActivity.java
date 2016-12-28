@@ -18,9 +18,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //定义四个输入框按钮
     EditText add_edi,delete_edi,modify_edi,query_edi;
 
-    //定义结果显示控件
-    TextView Result;
-
     //创建数据库
     mySQLhelper dbHelper;
 
@@ -65,8 +62,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         query= (Button) findViewById(R.id.query);
         query.setOnClickListener(this);
 
-        //结果显示
-        Result= (TextView) findViewById(R.id.Result);
     }
 
     @Override
@@ -90,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //创建一个可写数据库,并执行删除数据操作
                 SQLiteDatabase db_delete=dbHelper.getWritableDatabase();
                 //删除数据
-                db_delete.delete("info","id>?",new String[]{"1"});
+                db_delete.delete("info","id=?",new String[]{"12"});
                 //关闭数据库
                 db_delete.close();
                 break;
@@ -114,7 +109,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         //遍历cursor对象,取出数据并显示
                         String id=cursor.getString(cursor.getColumnIndex("id"));
                         String info=cursor.getString(cursor.getColumnIndex("info"));
-                        Result.setText("id:"+id+","+"info:"+info);
                     }while (cursor.moveToNext());
                 }
                 cursor.close();
