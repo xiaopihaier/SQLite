@@ -84,6 +84,25 @@
             android:text="查询一条数据"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID"/>
+        <TextView
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="info"/>
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
