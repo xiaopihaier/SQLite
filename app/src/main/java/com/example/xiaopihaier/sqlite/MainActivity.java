@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //创建数据库
     mySQLhelper dbHelper;
+
+    //数据列表
+    ListView Result_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         query= (Button) findViewById(R.id.query);
         query.setOnClickListener(this);
 
+        //数据显示
+        Result_list= (ListView) findViewById(R.id.Result_list);
     }
 
     @Override
