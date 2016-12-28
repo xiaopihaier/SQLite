@@ -9,8 +9,16 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class mySQLhelper extends SQLiteOpenHelper {
+
+    //创建数据库
+    public static final String SQLName="create table table_name("
+                        +"id integer primary  key autoincrement,"
+                        +"info text)";
+    private Context mcontext;
+
     public mySQLhelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
+        mcontext=context;
     }
 
     @Override
