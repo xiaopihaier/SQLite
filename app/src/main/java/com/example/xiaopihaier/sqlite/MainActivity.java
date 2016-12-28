@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         dbHelper=new mySQLhelper(this,"SQL.db",null,1);
 
+
         IntentView();
     }
 

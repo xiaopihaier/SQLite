@@ -19,11 +19,12 @@ public class mySQLhelper extends SQLiteOpenHelper {
     public mySQLhelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         mcontext=context;
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        db.execSQL(SQLName);
     }
 
     @Override
