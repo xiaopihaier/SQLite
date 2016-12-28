@@ -18,10 +18,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //定义结果显示控件
     TextView Result;
 
+    //创建数据库
+    mySQLhelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        dbHelper=new mySQLhelper(this,"SQL.db",null,1);
+
         IntentView();
     }
 
@@ -64,25 +70,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             //点击增加按钮
             case R.id.add:
-                //执行添加数据操作
+                //创建一个可写数据库,并执行添加数据操作
+                dbHelper.getWritableDatabase();
 
                 break;
 
             //点击删除按钮
             case R.id.delete:
-                //执行删除数据操作
+                //创建一个可写数据库,并执行删除数据操作
 
                 break;
 
             //点击修改按钮
             case R.id.modify:
-                //执行修改数据操作
+                //创建一个可写数据库,并执行修改数据操作
 
                 break;
 
             //点击查询按钮
             case R.id.query:
-                //执行查询数据的操作
+                //创建一个可读数据库,并执行查询数据的操作
 
                 break;
         }
