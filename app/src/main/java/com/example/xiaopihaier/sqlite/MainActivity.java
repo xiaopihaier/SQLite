@@ -1,5 +1,8 @@
 package com.example.xiaopihaier.sqlite;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -71,26 +74,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //点击增加按钮
             case R.id.add:
                 //创建一个可写数据库,并执行添加数据操作
-                dbHelper.getWritableDatabase();
-
+                SQLiteDatabase db_add=dbHelper.getWritableDatabase();
+                ContentValues values=new ContentValues();
+                //组装数据
+                values.put("info",add_edi.getText().toString().trim());
+                //插入数据
+                db_add.insert("info",null,values);
+                //关闭数据库
+                db_add.close();
                 break;
 
             //点击删除按钮
             case R.id.delete:
                 //创建一个可写数据库,并执行删除数据操作
-
+                SQLiteDatabase db_delete=dbHelper.getWritableDatabase();
+                //删除数据
+                db_delete.delete("info","id>?",new String[]{"10"});
+                //关闭数据库
+                db_delete.close();
                 break;
 
             //点击修改按钮
             case R.id.modify:
                 //创建一个可写数据库,并执行修改数据操作
-
+                SQLiteDatabase db_modify=dbHelper.getWritableDatabase();
+                //修改数据
+                //db_mo
                 break;
 
             //点击查询按钮
             case R.id.query:
                 //创建一个可读数据库,并执行查询数据的操作
-
+                SQLiteDatabase db_query=dbHelper.getReadableDatabase();
+                //查询info表所有数据
+                Cursor cursor=db_query.query("info",null,null,null,null,null,null);
+                if (cursor.moveToFirst()) {
+                    do {
+                        //遍历cursor对象,取出数据并显示
+                        String info=cursor.getString(cursor.getColumnIndex("info"));
+                        Result.setText(info);
+                    }while (cursor.moveToNext());
+                }
+                cursor.close();
                 break;
         }
     }
