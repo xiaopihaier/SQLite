@@ -112,8 +112,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (cursor.moveToFirst()) {
                     do {
                         //遍历cursor对象,取出数据并显示
+                        String id=cursor.getString(cursor.getColumnIndex("id"));
                         String info=cursor.getString(cursor.getColumnIndex("info"));
-                        Result.setText(info);
+                        Result.setText("id:"+id+","+"info:"+info);
                     }while (cursor.moveToNext());
                 }
                 cursor.close();
